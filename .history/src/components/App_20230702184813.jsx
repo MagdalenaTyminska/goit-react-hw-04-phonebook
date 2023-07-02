@@ -33,10 +33,10 @@ export const App = () => {
       name: name,
       number: number,
     };
-
+  
     const nameExist = contacts.find(contact => contact.name === name);
     const numberExist = contacts.find(contact => contact.number === number);
-
+  
     if (nameExist) {
       alert(`${name} is already in contacts`);
     } else if (numberExist) {

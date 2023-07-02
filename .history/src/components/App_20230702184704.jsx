@@ -48,11 +48,6 @@ export const App = () => {
     }
   };
 
-  const handleSearch = event => {
-    const { value } = event.target;
-    setFilter(value);
-  };
-
   const handleRemove = event => {
     const { id } = event.target;
     const updatedContacts = contacts.filter(contact => contact.id !== id);

@@ -33,10 +33,10 @@ export const App = () => {
       name: name,
       number: number,
     };
-
+  
     const nameExist = contacts.find(contact => contact.name === name);
     const numberExist = contacts.find(contact => contact.number === number);
-
+  
     if (nameExist) {
       alert(`${name} is already in contacts`);
     } else if (numberExist) {
@@ -47,19 +47,13 @@ export const App = () => {
       updateLocalStorage(updatedContacts);
     }
   };
-
-  const handleSearch = event => {
-    const { value } = event.target;
-    setFilter(value);
-  };
-
+  
   const handleRemove = event => {
     const { id } = event.target;
     const updatedContacts = contacts.filter(contact => contact.id !== id);
     setContacts(updatedContacts);
     updateLocalStorage(updatedContacts);
   };
-
   return (
     <>
       <div className={css.boxApp}>

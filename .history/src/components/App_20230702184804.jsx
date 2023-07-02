@@ -33,10 +33,10 @@ export const App = () => {
       name: name,
       number: number,
     };
-
+  
     const nameExist = contacts.find(contact => contact.name === name);
     const numberExist = contacts.find(contact => contact.number === number);
-
+  
     if (nameExist) {
       alert(`${name} is already in contacts`);
     } else if (numberExist) {
@@ -55,9 +55,9 @@ export const App = () => {
 
   const handleRemove = event => {
     const { id } = event.target;
-    const updatedContacts = contacts.filter(contact => contact.id !== id);
-    setContacts(updatedContacts);
-    updateLocalStorage(updatedContacts);
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contact.id !== id)
+    );
   };
 
   return (

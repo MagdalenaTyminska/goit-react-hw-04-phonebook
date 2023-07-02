@@ -22,10 +22,6 @@ export const App = () => {
     }
   }, []);
 
-  const updateLocalStorage = updatedContacts => {
-    localStorage.setItem('contacts', JSON.stringify(updatedContacts));
-  };
-
   const handleSubmit = ({ event, name, number }) => {
     event.preventDefault();
     const contact = {
@@ -42,9 +38,7 @@ export const App = () => {
     } else if (numberExist) {
       alert(`This number ${number} is already in contacts`);
     } else {
-      const updatedContacts = [...contacts, contact];
-      setContacts(updatedContacts);
-      updateLocalStorage(updatedContacts);
+      setContacts(prevContacts => [...prevContacts, contact]);
     }
   };
 
@@ -55,9 +49,9 @@ export const App = () => {
 
   const handleRemove = event => {
     const { id } = event.target;
-    const updatedContacts = contacts.filter(contact => contact.id !== id);
-    setContacts(updatedContacts);
-    updateLocalStorage(updatedContacts);
+    setContacts(prevContacts =>
+      prevContacts.filter(contact => contact.id !== id)
+    );
   };
 
   return (
